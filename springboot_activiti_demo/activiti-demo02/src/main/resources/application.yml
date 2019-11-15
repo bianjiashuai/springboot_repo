@@ -1,0 +1,47 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/activiti_demo?serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialization-mode: always
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    # filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  activiti:
+    check-process-definitions: false # 自动部署验证设置:true-开启（默认）、false-关闭
+    process-definition-location-prefix: classpath:/processes/
+    database-schema-update: true
+    # 不生成流程图png
+    createDiagramOnDeploy: false
+    # 异步启动
+    async-executor-activate: true
+    job-executor-activate: true # asyncExecutorEnabled属性设置设置true后将代替那些老的Job executor
+    history-level: full
+    db-history-used: true
+#logging:
+#  level:
+#    com.bjs: debug
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(-%5p)  %clr(${PID:- }){magenta} --- %clr([%15.15t]){faint} %highlight(%-80.80logger{300}){cyan} %clr(:) %m %n%wEx"
+zwwl:
+  swagger:
+    title: BJS工作流API
+    description: BJS工作流API | 学习Demo
+    scan-package: com.bjs.controller
+

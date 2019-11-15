@@ -1,0 +1,24 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/activiti_demo?serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  activiti:
+    check-process-definitions: false
+    process-definition-location-prefix: classpath:/processes/
+    database-schema-update: true
+    # 不生成流程图png
+    createDiagramOnDeploy: false
+    # 异步启动
+    async-executor-activate: true
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true

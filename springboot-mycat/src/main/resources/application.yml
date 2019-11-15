@@ -1,0 +1,14 @@
+server:
+  port: 10008
+spring:
+  datasource:
+    druid:
+      driver-class-name: org.mariadb.jdbc.Driver
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:8066/TESTDB
+zwwl:
+  swagger:
+    scan-package: com.bjs.controller
+    title: springboot-mycat
+    description: springboot-mycat
